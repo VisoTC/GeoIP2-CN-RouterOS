@@ -1,0 +1,68 @@
+name: Sync GeoIP-CN to Release Branch
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch: 
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout Main Branch
+        uses: actions/checkout@v4
+      
+      - name: Download and Split IP Lists
+        run: |
+          # 1. 下载最新的 GeoIP-CN 数据（包含 IPv4 和 IPv6）
+          curl -L https://raw.githubusercontent.com/Loyalsoldier/geoip/release/text/cn.txt -o raw_all.txt
+
+          # 2. 处理 IPv4 (过滤包含 '.' 的行)
+          {
+            echo '/log info "Loading CN ipv4 address list"'
+            echo '/ip firewall address-list remove [/ip firewall address-list find list=CN]'
+            echo '/ip firewall address-list'
+            grep '\.' raw_all.txt | awk '{print ":do { add address=" $1 " list=CN } on-error={}"}'
+          } > CN.rsc
+
+          # 3. 处理 IPv6 (过滤包含 ':' 的行)
+          {
+            echo '/log info "Loading CN ipv6 address list"'
+            echo '/ipv6 firewall address-list remove [/ipv6 firewall address-list find list=CN]'
+            echo '/ipv6 firewall address-list'
+            grep ':' raw_all.txt | awk '{print ":do { add address=" $1 " list=CN } on-error={}"}'
+          } > CN6.rsc
+
+          # 4. 复制到 tmp
+          mv CN.rsc CN6.rsc /tmp/
+
+      - name: Commit and Push to Release Branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "6542086+VisoTC@users.noreply.github.com "
+          
+          git fetch origin
+
+          if git show-ref --verify --quiet refs/remotes/origin/release; then
+            # 如果有，就切换过去并同步
+            git checkout release
+            git pull origin release
+          else
+            # 如果没有，就创建一个全新的孤儿分支（仅限第一次运行）
+            git checkout --orphan release
+            git rm -rf .
+          fi
+
+          mv /tmp/*.rsc ./
+          
+          git add CN.rsc CN6.rsc
+          
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "update: CN.rsc updated at $(date +'%Y-%m-%d %H:%M')"
+            git push origin release
+          fi
