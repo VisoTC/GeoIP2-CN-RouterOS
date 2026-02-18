@@ -5,8 +5,8 @@
 ## 下载链接
 | 项目 | 文件 | GitHub RAW | CDN 加速 |
 |  :--:  |  :--:  |     :--:     |     :--:    |
-| IPv4 列表 | CN.rsc | [点我下载](https://raw.githubusercontent.com/VisoTC/GeoIP2-CN-RouterOS/refs/heads/release/CN.rsc) | [点我下载](https://fastly.jsdelivr.net/gh/VisoTC/GeoIP2-CN-RouterOS@release/CN.rsc) |
-| IPv6 列表 | CN6.rsc | [点我下载](https://raw.githubusercontent.com/VisoTC/GeoIP2-CN-RouterOS/refs/heads/release/CN6.rsc) | [点我下载](https://fastly.jsdelivr.net/gh/VisoTC/GeoIP2-CN-RouterOS@release/CN6.rsc) |
+| IPv4 列表 | CN.rsc | [点我下载](https://github.com/VisoTC/GeoIP2-CN-RouterOS/raw/refs/heads/release/CN.rsc) | [点我下载](https://fastly.jsdelivr.net/gh/VisoTC/GeoIP2-CN-RouterOS@release/CN.rsc) |
+| IPv6 列表 | CN6.rsc | [点我下载](https://github.com/VisoTC/GeoIP2-CN-RouterOS/raw/refs/heads/release/CN6.rsc) | [点我下载](https://fastly.jsdelivr.net/gh/VisoTC/GeoIP2-CN-RouterOS@release/CN6.rsc) |
 
 对于网络状况良好、无污染的环境下，建议选择 GitHub RAW 的方式下载，因为可以第一获取到最新的资源，因为服务器在境外，可能下载响应时间和速度稍长，但因为文件小，所以通常问题不大。
 
