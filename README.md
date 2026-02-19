@@ -30,6 +30,10 @@
 /file remove "CN6.rsc"
 ```
 
+## 鸣谢
+
+本项目的受到了 iwik([链接](https://blog.erben.sk/2014/02/06/country-cidr-ip-ranges/)) 的启发。感谢原作者在方面的优秀设计。
+
 ## License
 
 This project is licensed under the [GPL-3.0](https://github.com/VisoTC/GeoIP2-CN-RouterOS/blob/main/LICENSE). See the LICENSE file for details.
