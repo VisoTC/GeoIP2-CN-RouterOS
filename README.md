@@ -1,4 +1,4 @@
-# GeoIP2-CN-RouterOS 简介
+# GeoIP-CN-RouterOS 简介
 
 本项目会根据 [Loyalsoldier/geoip](https://github.com/Loyalsoldier/geoip) 生成用于导入到 RouterOS 的 GeoIP 数据文件，包含中国大陆的 IPv4 和 IPv6 地址数据。生成的文件格式为 RouterOS 的脚本格式（`.rsc`），可以直接在 RouterOS 上执行导入。
 
@@ -28,3 +28,14 @@
 /tool fetch url=https://raw.githubusercontent.com/VisoTC/GeoIP2-CN-RouterOS/refs/heads/release/CN6.rsc dst-path=CN6.rsc
 /import file-name=CN6.rsc
 /file remove "CN6.rsc"
+```
+
+## License
+
+This project is licensed under the [GPL-3.0](https://github.com/VisoTC/GeoIP2-CN-RouterOS/blob/main/LICENSE). See the LICENSE file for details.
+
+This project includes GeoIP data and logic derived from the following sources:
+
+1. [Loyalsoldier/geoip](https://github.com/Loyalsoldier/geoip): Licensed under [CC-BY-SA-4.0](https://creativecommons.org/licenses/by-sa/4.0/) and [GPL-3.0](https://github.com/Loyalsoldier/geoip/blob/master/LICENSE-GPL).
+
+2. MaxMind GeoLite2: This product includes GeoLite2 data created by MaxMind, available from https://www.maxmind.com.
