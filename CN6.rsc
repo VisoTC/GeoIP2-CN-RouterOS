@@ -127,6 +127,7 @@
 :do { add address=2400:cb80:e40::/44 list=CN } on-error={}
 :do { add address=2400:da00::/32 list=CN } on-error={}
 :do { add address=2400:dd00::/28 list=CN } on-error={}
+:do { add address=2400:e680::/32 list=CN } on-error={}
 :do { add address=2400:ee00::/32 list=CN } on-error={}
 :do { add address=2400:f6e0::/32 list=CN } on-error={}
 :do { add address=2400:f720::/32 list=CN } on-error={}
